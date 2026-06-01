@@ -32,7 +32,7 @@ public:
     Quantity GetInitialQuantity() const { return initialQuantity_; }
     Quantity GetRemainingQuantity() const { return remainingQuantity_; }
     Quantity GetFilledQuantity() const {return initialQuantity_ - remainingQuantity_; }
-    bool IsFilled() const {return remainingQuantity_ ==0; }
+    bool IsFilled() const {return remainingQuantity_ == 0; }
     void Fill(Quantity quantity)
     {
         if (quantity > remainingQuantity_){
@@ -54,3 +54,9 @@ public:
 
 using OrderPointer = std::shared_ptr<Order>;  //只是定义了这个类型的别名，并没有声明任何东西
 using OrderPointers = std::vector<OrderPointer>;
+
+struct OrderEntry
+{
+    OrderPointer order_{nullptr};
+    OrderPointers::iterator  location_;
+};
